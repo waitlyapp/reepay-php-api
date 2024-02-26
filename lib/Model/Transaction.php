@@ -399,6 +399,7 @@ class Transaction implements ArrayAccess
     const PAYMENT_TYPE_SEPA = 'sepa';
     const PAYMENT_TYPE_VERKKOPANKKI = 'verkkopankki';
     const PAYMENT_TYPE_MOBILEPAY_SUBSCRIPTIONS = 'mobilepay_subscriptions';
+    const PAYMENT_TYPE_EPS = 'eps';
     const PAYMENT_CONTEXT_CIT = 'cit';
     const PAYMENT_CONTEXT_MIT = 'mit';
     const PAYMENT_CONTEXT_CIT_COF = 'cit_cof';
@@ -470,6 +471,7 @@ class Transaction implements ArrayAccess
             self::PAYMENT_TYPE_SEPA,
             self::PAYMENT_TYPE_VERKKOPANKKI,
             self::PAYMENT_TYPE_MOBILEPAY_SUBSCRIPTIONS,
+            self::PAYMENT_TYPE_EPS,
         ];
     }
 
@@ -569,8 +571,9 @@ class Transaction implements ArrayAccess
         $allowed_values = $this->getStateAllowableValues();
         if (!in_array($this->container['state'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'state', must be one of '%s'",
-                implode("', '", $allowed_values)
+                "invalid value for 'state', must be one of '%s' got value '%s'",
+                implode("', '", $allowed_values),
+                $this->container['state']
             );
         }
 
