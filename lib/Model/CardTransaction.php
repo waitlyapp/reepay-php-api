@@ -262,8 +262,9 @@ class CardTransaction implements ArrayAccess
         $allowed_values = $this->getErrorStateAllowableValues();
         if (!in_array($this->container['error_state'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'error_state', must be one of '%s'",
-                implode("', '", $allowed_values)
+                "invalid value for 'error_state', must be one of '%s' got value '%s'",
+                implode("', '", $allowed_values),
+                $this->container['error_state']
             );
         }
 
