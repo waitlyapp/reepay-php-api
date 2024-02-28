@@ -399,6 +399,7 @@ class Transaction implements ArrayAccess
     const PAYMENT_TYPE_SEPA = 'sepa';
     const PAYMENT_TYPE_VERKKOPANKKI = 'verkkopankki';
     const PAYMENT_TYPE_MOBILEPAY_SUBSCRIPTIONS = 'mobilepay_subscriptions';
+    const PAYMENT_TYPE_EMV_TOKEN = 'emv_token';
     const PAYMENT_TYPE_EPS = 'eps';
     const PAYMENT_CONTEXT_CIT = 'cit';
     const PAYMENT_CONTEXT_MIT = 'mit';
@@ -471,6 +472,7 @@ class Transaction implements ArrayAccess
             self::PAYMENT_TYPE_SEPA,
             self::PAYMENT_TYPE_VERKKOPANKKI,
             self::PAYMENT_TYPE_MOBILEPAY_SUBSCRIPTIONS,
+            self::PAYMENT_TYPE_EMV_TOKEN,
             self::PAYMENT_TYPE_EPS,
         ];
     }
@@ -536,6 +538,7 @@ class Transaction implements ArrayAccess
         $this->container['trustly_transaction'] = isset($data['trustly_transaction']) ? $data['trustly_transaction'] : null;
         $this->container['verkkopankki_transaction'] = isset($data['verkkopankki_transaction']) ? $data['verkkopankki_transaction'] : null;
         $this->container['eps_transaction'] = isset($data['eps_transaction']) ? $data['eps_transaction'] : null;
+        $this->container['emv_transaction'] = isset($data['emv_transaction']) ? $data['emv_transaction'] : null;
         $this->container['estonia_banks_transaction'] = isset($data['estonia_banks_transaction']) ? $data['estonia_banks_transaction'] : null;
         $this->container['latvia_banks_transaction'] = isset($data['latvia_banks_transaction']) ? $data['latvia_banks_transaction'] : null;
         $this->container['lithuania_banks_transaction'] = isset($data['lithuania_banks_transaction']) ? $data['lithuania_banks_transaction'] : null;
@@ -1458,6 +1461,27 @@ class Transaction implements ArrayAccess
     public function setEpsTransaction($eps_transaction)
     {
         $this->container['eps_transaction'] = $eps_transaction;
+
+        return $this;
+    }
+
+    /**
+     * Gets emv_transaction
+     * @return \Reepay\Model\EmvTransaction
+     */
+    public function getEmvTransaction()
+    {
+        return $this->container['emv_transaction'];
+    }
+
+    /**
+     * Sets emv_transaction
+     * @param \Reepay\Model\EmvTransaction $emv_transaction Specifics in case of eps transaction
+     * @return $this
+     */
+    public function setEmvTransaction($emv_transaction)
+    {
+        $this->container['emv_transaction'] = $emv_transaction;
 
         return $this;
     }
