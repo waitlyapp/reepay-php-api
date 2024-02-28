@@ -586,8 +586,9 @@ class Transaction implements ArrayAccess
         $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowed_values)
+                "invalid value for 'type', must be one of '%s' got value '%s'",
+                implode("', '", $allowed_values),
+                $this->container['type']
             );
         }
 
@@ -613,15 +614,17 @@ class Transaction implements ArrayAccess
         $allowed_values = $this->getPaymentTypeAllowableValues();
         if (!in_array($this->container['payment_type'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'payment_type', must be one of '%s'",
-                implode("', '", $allowed_values)
+                "invalid value for 'payment_type', must be one of '%s' got value '%s'",
+                implode("', '", $allowed_values),
+                $this->container['payment_type']
             );
         }
         $allowed_values = $this->getPaymentContextAllowableValues();
         if (!in_array($this->container['payment_context'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'payment_context', must be one of '%s'",
-                implode("', '", $allowed_values)
+                "invalid value for 'payment_context', must be one of '%s' got value '%s'",
+                implode("', '", $allowed_values),
+                $this->container['payment_context']
             );
         }
         return $invalid_properties;
