@@ -186,9 +186,9 @@ class VippsRecurringTransaction implements ArrayAccess
         $allowed_values = $this->getErrorStateAllowableValues();
         if (!in_array($this->container['error_state'], $allowed_values)) {
             $invalid_properties[] = sprintf(
-                "invalid value for 'state', must be one of '%s' got value '%s'",
+                "invalid value for 'error_state', must be one of '%s' got value '%s'",
                 implode("', '", $allowed_values),
-                $this->container['state']
+                $this->container['error_state']
             );
         }
 
