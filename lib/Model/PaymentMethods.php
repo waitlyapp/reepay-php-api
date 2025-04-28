@@ -55,7 +55,8 @@ class PaymentMethods implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'cards' => '\Reepay\Model\Card[]',
-        'mps_subscriptions' => '\Reepay\Model\MpsSubscription[]'
+        'mps_subscriptions' => '\Reepay\Model\MpsSubscription[]',
+        'vipps_recurring_subscriptions' => '\Reepay\Model\VippsRecurringSubscription[]'
     ];
 
     /**
@@ -82,7 +83,8 @@ class PaymentMethods implements ArrayAccess
      */
     protected static $attributeMap = [
         'cards' => 'cards',
-        'mps_subscriptions' => 'mps_subscriptions'
+        'mps_subscriptions' => 'mps_subscriptions',
+        'vipps_recurring_subscriptions' => 'vipps_recurring_subscriptions'
     ];
 
 
@@ -92,7 +94,8 @@ class PaymentMethods implements ArrayAccess
      */
     protected static $setters = [
         'cards' => 'setCards',
-        'mps_subscriptions' => 'setMpsSubscriptions'
+        'mps_subscriptions' => 'setMpsSubscriptions',
+        'vipps_recurring_subscriptions' => 'setVippsSubscriptions'
     ];
 
 
@@ -103,6 +106,7 @@ class PaymentMethods implements ArrayAccess
     protected static $getters = [
         'cards' => 'getCards',
         'mps_subscriptions' => 'getMpsSubscriptions',
+        'vipps_recurring_subscriptions' => 'getVippsSubscriptions'
     ];
 
     public static function attributeMap()
@@ -134,6 +138,7 @@ class PaymentMethods implements ArrayAccess
     {
         $this->container['cards'] = isset($data['cards']) ? $data['cards'] : null;
         $this->container['mps_subscriptions'] = isset($data['mps_subscriptions']) ? $data['mps_subscriptions'] : null;
+        $this->container['vipps_recurring_subscriptions'] = isset($data['vipps_recurring_subscriptions']) ? $data['vipps_recurring_subscriptions'] : null;
     }
 
     /**
@@ -192,6 +197,18 @@ class PaymentMethods implements ArrayAccess
     public function getMpsSubscriptions()
     {
         return $this->container['mps_subscriptions'];
+    }
+
+    public function setVippsRecurringSubscriptions($vipps_recurring_subscriptions)
+    {
+        $this->container['vipps_recurring_subscriptions'] = $vipps_recurring_subscriptions;
+
+        return $this;
+    }
+
+    public function getVippsRecurringSubscriptions()
+    {
+        return $this->container['vipps_recurring_subscriptions'];
     }
 
     /**
