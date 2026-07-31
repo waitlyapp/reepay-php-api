@@ -190,6 +190,18 @@ class InvoiceShippingAddress implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['company'] = isset($data['company']) ? $data['company'] : null;
+        $this->container['vat'] = isset($data['vat']) ? $data['vat'] : null;
+        $this->container['attention'] = isset($data['attention']) ? $data['attention'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['address2'] = isset($data['address2']) ? $data['address2'] : null;
+        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
+        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
+        $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
+        $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
+        $this->container['state_or_province'] = isset($data['state_or_province']) ? $data['state_or_province'] : null;
     }
 
     /**
@@ -288,25 +300,25 @@ class InvoiceShippingAddress implements ArrayAccess
     }
 
     /**
-     * Get address1
+     * Get address
      *
      * @return string
      */
-    public function getAddress1()
+    public function getAddress()
     {
-        return $this->container['address1'];
+        return $this->container['address'];
     }
 
     /**
-     * Set address1
+     * Set address
      *
-     * @param string $address1
+     * @param string $address
      *
      * @return $this
      */
-    public function setAddress1($address1)
+    public function setAddress($address)
     {
-        $this->container['address1'] = $address1;
+        $this->container['address'] = $address;
 
         return $this;
     }
