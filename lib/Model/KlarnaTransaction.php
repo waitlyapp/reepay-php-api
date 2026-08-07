@@ -251,7 +251,7 @@ class KlarnaTransaction implements ArrayAccess
         }
         $allowed_values = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowed_values)) {
-            return false
+            return false;
         }
         return true;
     }
